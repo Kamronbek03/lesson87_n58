@@ -50,7 +50,6 @@ const App: React.FC = () => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
 
-    // Agar oxirgi sahifada faqat 1 ta todo bo'lsa va u o'chirilsa, oldingi sahifaga o'tish
     if (
       currentPage > 1 &&
       updatedTodos.length <= (currentPage - 1) * todosPerPage
@@ -100,10 +99,7 @@ const App: React.FC = () => {
   const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
   const currentTodos = todos.slice(indexOfFirstTodo, indexOfLastTodo);
 
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
+  const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
     setCurrentPage(value);
   };
 
@@ -145,7 +141,6 @@ const App: React.FC = () => {
         style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
       />
 
-      {/* Tasdiqlash oynasi */}
       <Dialog open={openConfirm} onClose={handleCloseConfirm}>
         <DialogTitle>{"Delete Todo"}</DialogTitle>
         <DialogContent>
